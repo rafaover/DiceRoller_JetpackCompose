@@ -17,7 +17,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.key.Key.Companion.I
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,14 +37,23 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
     // Result now is a State, so it can be changed.
-     var result by remember { mutableStateOf(1) }
+    var result by remember { mutableStateOf(1) }
+    val imageResource = when(result){
+        1 -> R.drawable.dice_1
+        2 -> R.drawable.dice_2
+        3 -> R.drawable.dice_3
+        4 -> R.drawable.dice_4
+        5 -> R.drawable.dice_5
+        else -> R.drawable.dice_6
+    }
+
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Image(
-            painter = painterResource(R.drawable.dice_1),
-            contentDescription = "1",
+            painter = painterResource(imageResource),
+            contentDescription = result.toString(),
             modifier = Modifier.padding(bottom = 16.dp)
 
         )
