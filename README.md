@@ -1,5 +1,5 @@
 # Dice Roller using JetpackCompose
 
 Learning:
-- Button composable
-- Use of remember API to state management and declaration of MutableState.
+- use of `button` composable
+- Use of `remember` function to state management and declaration of `MutableState`.
